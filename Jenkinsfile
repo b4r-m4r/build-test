@@ -24,7 +24,6 @@ pipeline {
 
         stage('Test Request') {
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     script {
                         def response = sh(script: "curl -s -o /dev/null -w '%{http_code}' http://localhost:80", returnStdout: true).trim()
                         
@@ -34,7 +33,6 @@ pipeline {
                         else {
                             echo "Test passed"
                         }
-                }
                 }
             }
         }
