@@ -18,7 +18,6 @@ pipeline {
                 sh "docker network create task_net || true"
                 sh "docker run --name webapp --network task_net -d --add-host=host.docker.internal:host-gateway minipuppeteer/flask:latest"
                 sh "docker run --name reverse-proxy --network task_net -d -p 80:80 minipuppeteer/nginx-proxy:latest"
-                sh 'sleep 15'
             }
         }
 
