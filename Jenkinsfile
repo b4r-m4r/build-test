@@ -38,13 +38,3 @@ pipeline {
                 }
             }
         }
-
-        stage('Cleanup') {
-            steps {
-                    sh "docker stop webapp reverse-proxy || true"
-                    sh "docker rm webapp reverse-proxy || true"
-                    sh "docker network rm task_net || true"
-            }
-        }
-    }
-}
